@@ -9,11 +9,16 @@ const GroceryList = (props) => (
 
 const GroceryListItem = (props) => {
   const [isDone, setIsDone] =  useState(false);
+  const [isHover, setIsHover] =  useState(false);
   const style = {
-    textDecoration: isDone ? 'line-through' : 'none'
+    textDecoration: isDone ? 'line-through' : 'none',
+    'font-weight': isHover ? 'bold': 'normal'
   };
   return(
-    <li style = {style} onClick={() => setIsDone(!isDone)}>{props.name}</li>
+    <li style = {style}
+    onClick={() => setIsDone(!isDone)}
+    onMouseEnter={() => setIsHover(true)}
+    onMouseLeave={() => setIsHover(false)}>{props.name}</li>
   )
 }
 
